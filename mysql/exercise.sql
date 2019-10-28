@@ -28,6 +28,8 @@ CREATE TABLE category
 INSERT INTO product
 VALUES (NULL, '泰国大榴莲', 98, NULL, 1);
 INSERT INTO product
+VALUES (NULL, '新疆切糕', 68, NULL, 1);
+INSERT INTO product
 VALUES (NULL, '泰国大枣', 38, NULL, 1);
 INSERT INTO product
 VALUES (NULL, '新疆切糕', 68, NULL, 2);
@@ -54,3 +56,19 @@ SELECT *
 FROM product;
 
 SELECT version();
+
+UPDATE product
+SET pname = '海底捞'
+WHERE pid = 9;
+
+SELECT DISTINCT pname, price
+FROM product;
+
+SELECT *, count(DISTINCT pname, price, pid)
+FROM product
+GROUP BY pname
+ORDER BY pid;
+
+SELECT pname, price
+FROM product
+GROUP BY product.pname,product.price ;

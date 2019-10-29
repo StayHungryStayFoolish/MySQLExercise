@@ -110,3 +110,25 @@ FROM product
 GROUP BY cid
 HAVING avg(price) > 60;
 
+EXPLAIN SELECT *
+FROM product
+WHERE exists
+          (SELECT pname FROM product WHERE pid = 8);
+
+EXPLAIN SELECT pname
+        FROM product
+        WHERE pid = 1;
+
+## 查询是否支持分析功能
+show variables like 'have_profiling';
+## 查看开启状态
+select @@profiling;
+select @@profiling;
+## 开启分析功能，默认是为0，关闭状态
+SET profiling = 1;
+## 列出所有数据
+SHOW PROFILES;
+
+show profile CPU ,block io for query 212;
+
+

@@ -131,4 +131,14 @@ SHOW PROFILES;
 
 show profile CPU ,block io for query 212;
 
+# 查看索引使用情况
+# handler_read_key: 这个值越高越好，越高表示使用索引查询到的次数
+# handler_read_rnd_next: 这个值越高，说明查询低效
 
+# 索引失效
+# 1.如果条件中有or，即使其中有条件带索引也不会使用(这也是为什么尽量少用or的原因)
+# 2.对于多列索引，不是使用的第一部分(第一个)，则不会使用索引
+# 3.like查询是以%开头
+# 4..如果列类型是字符串，那一定要在条件中将数据使用引号引用起来,否则不使用索引
+# 5.如果mysql估计使用全表扫描要比使用索引快,则不使用索引
+show status like 'Handler_read%';

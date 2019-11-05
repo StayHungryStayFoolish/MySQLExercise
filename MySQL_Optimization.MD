@@ -1,5 +1,9 @@
 # MySQL Optimization
 
+## MySQL
+
+https://www.zsythink.net/archives/1233
+
 ## Explain
 
 ## Profiling
